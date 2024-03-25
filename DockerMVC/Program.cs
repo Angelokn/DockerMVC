@@ -1,7 +1,12 @@
+using DockerMVC.DataAcess.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
 var app = builder.Build();
 
