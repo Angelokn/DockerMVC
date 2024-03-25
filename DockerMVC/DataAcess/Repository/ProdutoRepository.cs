@@ -4,7 +4,7 @@ namespace DockerMVC.DataAcess.Repository
 {
     public class ProdutoRepository : IProdutoRepository
     {
-        private static Produto[] produto = new Produto[]
+        private static Produto[] produtos = new Produto[]
         {
             new Produto {Id=1, Nome="Lápis", Categoria="Material", Quantidade=50, Preco=2.0M},
             new Produto {Id=2, Nome="Caderno abc", Categoria="Caderno", Quantidade=30, Preco=25.0M},
@@ -12,6 +12,6 @@ namespace DockerMVC.DataAcess.Repository
             new Produto {Id=4, Nome="Borracha", Categoria="Material", Quantidade=50, Preco=1.5M},
         };
 
-        public IEnumerable<Produto> ProdutoList { get => produto; }
+        public IEnumerable<Produto> Produtos { get => produtos; }
     }
 }

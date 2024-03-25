@@ -7,17 +7,21 @@ namespace DockerMVC.Controllers
     {
         private IProdutoRepository _produtoRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private string message;
 
         public ProdutoController(IProdutoRepository produtoRepository, 
             IHttpContextAccessor httpContextAccessor)
         {
             _produtoRepository = produtoRepository;
             _httpContextAccessor = httpContextAccessor;
+            var hostName = _httpContextAccessor.HttpContext.Request.Host.Value;
+            message = $"Docker - ({hostName})";
         }
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag["Message"] = message;
+            return View(_produtoRepository.Produtos);
         }
     }
 }
