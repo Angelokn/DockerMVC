@@ -20,7 +20,7 @@ namespace DockerMVC.Controllers
 
         public IActionResult Index()
         {
-            ViewBag["Message"] = message;
+            ViewData["Message"] = message;
             return View(_produtoRepository.Produtos);
         }
     }
