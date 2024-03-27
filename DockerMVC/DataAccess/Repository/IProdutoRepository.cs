@@ -4,6 +4,7 @@ namespace DockerMVC.DataAcess.Repository
 {
     public interface IProdutoRepository
     {
-        IEnumerable<Produto> Produtos { get; }
+        //IEnumerable<Produto> Produtos { get; }
+        List<Produto> Produtos { get; }
     }
 }

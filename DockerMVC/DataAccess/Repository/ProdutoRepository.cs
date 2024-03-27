@@ -12,7 +12,13 @@ namespace DockerMVC.DataAcess.Repository
             _db = db;
         }
 
-        public IEnumerable<Produto> Produtos => _db.Produtos;
+        //public IEnumerable<Produto> Produtos => _db.Produtos;
+        public List<Produto> Produtos {  get; set; }
+
+        public void OnGet()
+        {
+            Produtos = _db.Produtos.ToList();
+        }
 
 
         //private static Produto[] produtos = new Produto[]
