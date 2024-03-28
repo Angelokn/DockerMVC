@@ -11,7 +11,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
 var host = builder.Configuration["DBHOST"] ?? "localhost";
-var port = builder.Configuration["DBPORT"] ?? "";
+var port = builder.Configuration["DBPORT"] ?? "5042";
 var password = builder.Configuration["DBPASSWORD"] ?? "123";
 
 string mySqlConnection = $"server={host};userid=root;pwd={password}"
