@@ -11,15 +11,16 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
 var host = builder.Configuration["DBHOST"] ?? "localhost";
-var port = builder.Configuration["DBPORT"] ?? "5042";
-var password = builder.Configuration["DBPASSWORD"] ?? "123";
+var port = builder.Configuration["DBPORT"] ?? "3306";
+var password = builder.Configuration["DBPASSWORD"] ?? "pitico";
 
-string mySqlConnection = $"server={host};userid=root;pwd={password}"
-                         + $"port={port};database=produtosdb";
+// db name: produtosdb
+string mySqlConnection = $"server={host}; userid=root; pwd={password};" + $"port={port}; database=produtosdb;";
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection));
+    //options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
