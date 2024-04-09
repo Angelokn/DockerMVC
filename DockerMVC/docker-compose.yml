@@ -12,8 +12,10 @@ services:
         image: "mysql:latest"
         volumes:
             - produtosdata:/var/lib/mysql
+            - ./MySQL_Init_Script:/docker-entrypoint-initdb.d
         networks:
             - backend
         environment:
             - MYSQL_ROOT_PASSWORD=senha123
             - bind-address=0.0.0.0
+
