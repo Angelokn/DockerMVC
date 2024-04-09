@@ -1,1 +1,19 @@
-﻿
+﻿version: "3"
+
+volumes:
+    produtosdata:
+  
+networks:
+    frontend:
+    backend:
+    
+services:
+    mysql:
+        image: "mysql:latest"
+        volumes:
+            - produtosdata:/var/lib/mysql
+        networks:
+            - backend
+        environment:
+            - MYSQL_ROOT_PASSWORD=senha123
+            - bind-address=0.0.0.0
