@@ -1,0 +1,17 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk
+
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY DockerMVC.csproj .
+
+RUN dotnet restore
+
+COPY . .
+
+RUN dotnet publish -c Release -o dist
+
+EXPOSE 8080/tcp
+
+CMD ["dotnet","dist/DockerMVC.dll"]
