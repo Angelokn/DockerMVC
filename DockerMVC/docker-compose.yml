@@ -29,6 +29,7 @@ services:
         ports:
             - 5000:8080
         environment:
-            - DBHOST=mysql    
+            - DBHOST=mysql
+            - ASPNETCORE_ENVIRONMENT=Development 
         depends_on:
             - mysql
