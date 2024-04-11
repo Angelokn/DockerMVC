@@ -1,0 +1,6 @@
+﻿namespace DockerMVC
+{
+    public class docker_compose_multi
+    {
+    }
+}
