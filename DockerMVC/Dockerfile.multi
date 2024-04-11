@@ -1,1 +1,20 @@
-﻿
+﻿#estágio 1 - base
+FROM mcr.microsoft.com/dotnet/runtime AS base
+RUN mkdir /app
+WORKDIR /app
+EXPOSE 8080/tcp
+
+#estágio 2 - publish
+FROM mcr.microsoft.com/dotnet/sdk AS publish
+WORKDIR /app
+COPY DockerMVC.csproj .
+RUN dotnet restore
+COPY . .
+RUN dotnet publish -c Release -o dist
+
+#estágio 3 - final
+FROM base AS final
+WORKDIR /dist
+COPY --from=publish /app/dist .
+ENTRYPOINT ["dotnet","DockerMVC.dll"]
+
